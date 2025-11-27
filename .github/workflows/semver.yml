@@ -16,7 +16,10 @@ jobs:
           fetch-depth: 0
       - name: Install svu
         shell: bash
-        run: sudo apt install svu -y
+        run: |
+          echo 'deb [trusted=yes] https://apt.fury.io/caarlos0/ /' | sudo tee /etc/apt/sources.list.d/caarlos0.list
+          sudo apt update
+          sudo apt install svu -y
       - name: Generate new git tag
         shell: bash
         run: |
